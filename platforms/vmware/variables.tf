@@ -45,6 +45,12 @@ variable "tectonic_vmware_cluster" {
   description = "vCenter Cluster used to create VMs under"
 }
 
+variable "tectonic_vmware_resource_pool" {
+  type        = "string"
+  description = "(optional) The name of a Resource Pool in which to launch the virtual machine. Requires full path. Full path can be obtained by executing `govc pool.info $ResourcePoolName`"
+  default     = ""
+}
+
 // # Global
 
 variable "tectonic_vmware_ssh_authorized_key" {
@@ -93,7 +99,7 @@ variable "tectonic_vmware_etcd_hostnames" {
   type = "map"
 
   description = <<EOF
-  Terraform map of etcd node(s) Hostnames, Example: 
+  Terraform map of etcd node(s) Hostnames, Example:
   tectonic_vmware_etcd_hostnames = {
   "0" = "mycluster-etcd-0"
   "1" = "mycluster-etcd-1"
@@ -106,7 +112,7 @@ variable "tectonic_vmware_etcd_ip" {
   type = "map"
 
   description = <<EOF
-  Terraform map of etcd node(s) IP Addresses, Example: 
+  Terraform map of etcd node(s) IP Addresses, Example:
   tectonic_vmware_etcd_ip = {
   "0" = "192.168.246.10/24"
   "1" = "192.168.246.11/24"
@@ -138,7 +144,7 @@ variable "tectonic_vmware_master_hostnames" {
   type = "map"
 
   description = <<EOF
-  Terraform map of Master node(s) Hostnames, Example: 
+  Terraform map of Master node(s) Hostnames, Example:
   tectonic_vmware_master_hostnames = {
   "0" = "mycluster-master-0"
   "1" = "mycluster-master-1"
@@ -150,7 +156,7 @@ variable "tectonic_vmware_master_ip" {
   type = "map"
 
   description = <<EOF
-  Terraform map of Master node(s) IP Addresses, Example: 
+  Terraform map of Master node(s) IP Addresses, Example:
   tectonic_vmware_vm_masterips = {
   "0" = "192.168.246.20/24"
   "1" = "192.168.246.21/24"
@@ -181,7 +187,7 @@ variable "tectonic_vmware_worker_hostnames" {
   type = "map"
 
   description = <<EOF
-  Terraform map of Worker node(s) Hostnames, Example: 
+  Terraform map of Worker node(s) Hostnames, Example:
   tectonic_vmware_vm_worker_hostnames = {
   "0" = "mycluster-worker-0"
   "1" = "mycluster-worker-1"
@@ -193,7 +199,7 @@ variable "tectonic_vmware_worker_ip" {
   type = "map"
 
   description = <<EOF
-  Terraform map of Worker node(s) IP Addresses, Example: 
+  Terraform map of Worker node(s) IP Addresses, Example:
   tectonic_vmware_vm_workerips = {
   "0" = "192.168.246.30/24"
   "1" = "192.168.246.31/24"
